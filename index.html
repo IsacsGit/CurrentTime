@@ -14,6 +14,14 @@
             font-style: normal;
         }
 
+        html, body, #clock-container, #time, #seconds {
+            user-select: none;
+            -webkit-user-select: none;
+            -webkit-touch-callout: none;
+            -webkit-tap-highlight-color: transparent;
+            cursor: none;
+        }
+
         body {
             background-color: #000000;
             color: #ffffff;
@@ -32,6 +40,7 @@
             grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
             align-items: baseline;
             width: 100vw;
+            pointer-events: none;
         }
 
         #time {
@@ -74,6 +83,10 @@
 
         setInterval(updateClock, 1000);
         updateClock();
+
+        document.addEventListener('contextmenu', event => event.preventDefault());
+        document.addEventListener('selectstart', event => event.preventDefault());
+        document.addEventListener('dragstart', event => event.preventDefault());
     </script>
 
 </body>
